@@ -36,7 +36,16 @@ const SignInForm = () => {
       );
       console.log(response);
       resetFormFields();
-    } catch (error) {}
+    } catch (error) {
+      switch (error.code) {
+        case "auth/user-not-found":
+          alert("User not found");
+          break;
+        case "auth/wrong-password":
+          alert("Password is incorrect");
+          break;
+      }
+    }
   };
 
   const handleChange = (event) => {
@@ -46,10 +55,10 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-up-container">
-      <h2>Existing Customer </h2>
-      <span>Sign in with your Email and Password</span>
-      <form onSubmit={handleSubmit}>
+    <div className="sign-in-container">
+      <h1>Existing Customer </h1>
+      <h2>Sign in with email & password</h2>
+      <form className="form" onSubmit={handleSubmit}>
         <FormInput
           label="Email"
           type="email"
@@ -66,12 +75,16 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        <div className="buttons-container">
-          <Button buttonType="google" type="submit">
+        <div>
+          <br></br>
+          <Button buttonType="normal" type="submit">
             Sign In
           </Button>
-          <Button onClick={signInWithGoogle} buttonType="google" type="submit">
-            Google Sign In
+          <br></br>
+          <br></br>
+          <h2>Sign in with Google</h2>
+          <Button buttonType="google" type="button" onClick={signInWithGoogle}>
+            Sign in with Google
           </Button>
         </div>
       </form>

@@ -25,6 +25,16 @@
   }
 
   &.google-sign-in {
+    background-color:#000000;
+    color: white;
+
+    &:hover {
+      background-color: black;
+      border: none;
+    }
+  }
+
+  &.normal {
     background-color:#D9BE83;
     color: white;
 

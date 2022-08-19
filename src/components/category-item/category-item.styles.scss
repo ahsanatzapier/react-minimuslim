@@ -56,15 +56,17 @@
     position: absolute;
 
     h2 {
-      font-weight: bold;
-      margin: 0 6px 0;
-      font-size: 22px;
+      margin: 0 0px 0;
+      font-size: 25px;
       color: #D9BE83;
-    }
+    } 
 
     p {
-      font-weight: lighter;
-      font-size: 16px;
+      font-weight:bold;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+
     }
   }
 }
