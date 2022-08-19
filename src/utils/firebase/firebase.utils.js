@@ -26,6 +26,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// eslint-disable-next-line
 const app = initializeApp(firebaseConfig);
 
 // Initializing the Google Auth Provider
@@ -84,7 +85,6 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
 export const signOutUser = async () => {
   await signOut(auth);
-  alert.success("Successfully signed in");
 };
 
 export const onAuthStateChangedListener = (callback) => {

@@ -3,7 +3,6 @@ import { useAlert } from "react-alert";
 
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
@@ -25,17 +24,14 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
+    await signInWithGooglePopup();
     alert.success("Successfully signed in");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      await signInAuthUserWithEmailAndPassword(email, password);
 
       alert.success("Successfully signed in");
       resetFormFields();
@@ -67,7 +63,7 @@ const SignInForm = () => {
 
   return (
     <div className="sign-in-container">
-      <h1>Existing Customer </h1>
+      <h1>Welcome Back!</h1>
       <h2>Sign in with email & password</h2>
       <form className="form" onSubmit={handleSubmit}>
         <FormInput

@@ -13,7 +13,7 @@ const Navigation = () => {
 
   const signOutHandler = () => {
     signOutUser();
-    alert.success("Signed out successfully");
+    alert.success("Successfully signed out ");
   };
 
   console.log(currentUser);
