@@ -1,10 +1,23 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as MiniMusimLogo } from "../../../assets/MiniMuslim.svg";
+import { UserContext } from "../../../contexts/user.context";
+import { signOutUser } from "../../../utils/firebase/firebase.utils";
+import { useAlert } from "react-alert";
 
 import "./navigation.styles.scss";
 
 const Navigation = () => {
+  const alert = useAlert();
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+    alert.success("Signed out successfully");
+  };
+
+  console.log(currentUser);
   return (
     <Fragment>
       <div className="navigation">
@@ -15,9 +28,15 @@ const Navigation = () => {
           <Link className="nav-link" to="/shop">
             SHOP
           </Link>
-          <Link className="nav-link" to="/auth">
-            SIGN IN
-          </Link>
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutHandler}>
+              SIGN OUT
+            </span>
+          ) : (
+            <Link className="nav-link" to="/auth">
+              SIGN IN
+            </Link>
+          )}
         </div>
       </div>
       <Outlet />
