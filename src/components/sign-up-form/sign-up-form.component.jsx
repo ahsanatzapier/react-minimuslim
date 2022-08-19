@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAlert } from "react-alert";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -15,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
+  const alert = useAlert();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmedPassword } = formFields;
 
@@ -38,7 +40,7 @@ const SignUpForm = () => {
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
+        alert.error("Cannot create user, email already in use");
       } else {
         console.log("User creation encountered an error", error);
       }

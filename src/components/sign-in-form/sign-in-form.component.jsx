@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useAlert } from "react-alert";
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -14,6 +15,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const alert = useAlert();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -39,10 +41,10 @@ const SignInForm = () => {
     } catch (error) {
       switch (error.code) {
         case "auth/user-not-found":
-          alert("User not found");
+          alert.error("User not found");
           break;
         case "auth/wrong-password":
-          alert("Password is incorrect");
+          alert.error("Password is incorrect");
           break;
       }
     }
