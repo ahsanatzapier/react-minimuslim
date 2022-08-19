@@ -9,11 +9,10 @@ import "./navigation.styles.scss";
 
 const Navigation = () => {
   const alert = useAlert();
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
-  const signOutHandler = async () => {
-    await signOutUser();
-    setCurrentUser(null);
+  const signOutHandler = () => {
+    signOutUser();
     alert.success("Signed out successfully");
   };
 
