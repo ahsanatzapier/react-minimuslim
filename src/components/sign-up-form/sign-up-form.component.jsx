@@ -37,12 +37,19 @@ const SignUpForm = () => {
         password
       );
       await createUserDocumentFromAuth(user, { displayName });
+      alert.success("Successfully created account");
+      alert.success("Successfully signed in");
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert.error("Cannot create user, email already in use");
-      } else {
-        console.log("User creation encountered an error", error);
+      console.log(error);
+
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          alert.error("Email already in use");
+          break;
+        case "auth/weak-password":
+          alert.error("Password should be at least 6 characters");
+          break;
       }
     }
   };

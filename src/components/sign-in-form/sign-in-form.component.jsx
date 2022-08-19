@@ -26,6 +26,7 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
     await createUserDocumentFromAuth(user);
+    alert.success("Successfully signed in");
   };
 
   const handleSubmit = async (event) => {
@@ -38,13 +39,20 @@ const SignInForm = () => {
       );
       console.log(response);
       resetFormFields();
+      alert.success("Successfully signed in");
     } catch (error) {
+      console.log(error);
       switch (error.code) {
         case "auth/user-not-found":
           alert.error("User not found");
           break;
         case "auth/wrong-password":
           alert.error("Password is incorrect");
+          break;
+        case "auth/too-many-requests":
+          alert.error(
+            "Access to this account has been temporarily disabled due to many failed login attempts"
+          );
           break;
       }
     }
