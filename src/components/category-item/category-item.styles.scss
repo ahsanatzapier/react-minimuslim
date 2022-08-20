@@ -55,6 +55,15 @@
     opacity: 0.9;
     position: absolute;
 
+    &:hover {
+      background-color: black;
+
+      p {
+        color: white;
+      }
+
+    }
+
     h2 {
       margin: 0 0px 0;
       font-size: 25px;
@@ -66,6 +75,7 @@
       font-size: 20px;
       margin: 0;
       padding: 0;
+      
 
     }
   }
