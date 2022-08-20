@@ -1,6 +1,9 @@
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as MiniMusimLogo } from "../../../assets/MiniMuslim.svg";
+
+import CartIcon from "../../cart-icon/cart-icon.component";
+
 import { UserContext } from "../../../contexts/user.context";
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 import { useAlert } from "react-alert";
@@ -36,6 +39,8 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+
+          <CartIcon />
         </div>
       </div>
       <Outlet />
