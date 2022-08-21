@@ -3,8 +3,11 @@ import { Outlet, Link } from "react-router-dom";
 import { ReactComponent as MiniMusimLogo } from "../../../assets/MiniMuslim.svg";
 
 import CartIcon from "../../cart-icon/cart-icon.component";
+import CartDropdown from "../../cart-dropdown/cart-dropdown.component";
 
 import { UserContext } from "../../../contexts/user.context";
+import { CartContext } from "../../../contexts/cart.context";
+
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 import { useAlert } from "react-alert";
 
@@ -13,6 +16,7 @@ import "./navigation.styles.scss";
 const Navigation = () => {
   const alert = useAlert();
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = () => {
     signOutUser();
@@ -42,6 +46,7 @@ const Navigation = () => {
 
           <CartIcon />
         </div>
+        {isCartOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>
