@@ -10,14 +10,12 @@ import { CartProvider } from "./contexts/cart.context";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "react-alert-template-basic";
+import AlertTemplate from "../src/template/react-alert.js";
 
 const options = {
-  // you can also just use 'bottom center'
   position: positions.TOP_CENTER,
   timeout: 2000,
   offset: "30px",
-  // you can also just use 'scale'
   transition: transitions.FADE,
 };
 
