@@ -16,9 +16,10 @@ import "./navigation.styles.scss";
 const Navigation = () => {
   const alert = useAlert();
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   const signOutHandler = () => {
+    setIsCartOpen(false);
     signOutUser();
     alert.success("Successfully signed out ");
   };
@@ -27,11 +28,19 @@ const Navigation = () => {
   return (
     <Fragment>
       <div className="navigation">
-        <Link className="logo-container" to="/">
+        <Link
+          className="logo-container"
+          to="/"
+          onClick={() => setIsCartOpen(false)}
+        >
           <MiniMusimLogo className="logo" />
         </Link>
         <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
+          <Link
+            className="nav-link"
+            to="/shop"
+            onClick={() => setIsCartOpen(false)}
+          >
             SHOP
           </Link>
           {currentUser ? (
@@ -39,7 +48,11 @@ const Navigation = () => {
               SIGN OUT
             </span>
           ) : (
-            <Link className="nav-link" to="/auth">
+            <Link
+              className="nav-link"
+              to="/auth"
+              onClick={() => setIsCartOpen(false)}
+            >
               SIGN IN
             </Link>
           )}
