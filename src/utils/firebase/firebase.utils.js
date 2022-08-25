@@ -1,7 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
-// Setting up the Authentication
+/**
+ * ##############################
+ * Setting up the Authentication
+ * ##############################
+ */
 import {
   getAuth,
   signInWithPopup,
@@ -12,10 +16,27 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-// Setting up firebase
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+/**
+ * ####################
+ * Setting up Database
+ * ####################
+ */
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection, // needed for upload
+  writeBatch, // needed for upload
+  query, // needed to get
+  getDocs, // needed to get
+} from "firebase/firestore";
 
-// Your web app's Firebase configuration
+/**
+ * ################################
+ * Web App's Firebase configuration
+ * ################################
+ */
 const firebaseConfig = {
   apiKey: "AIzaSyAhcG5W5kDhedHZi2EGVcZxkvjTrDYMMWQ",
   authDomain: "minimuslims-db.firebaseapp.com",
@@ -25,11 +46,19 @@ const firebaseConfig = {
   appId: "1:1070735973988:web:8d441fabb7b6dc77428971",
 };
 
-// Initialize Firebase
+/**
+ * ////////////////////
+ * Initialize Firebase
+ * ////////////////////
+ */
 // eslint-disable-next-line
 const app = initializeApp(firebaseConfig);
 
-// Initializing the Google Auth Provider
+/**
+ * ///////////////////////////////////////
+ * Initializing the Google Auth Provider
+ * ///////////////////////////////////////
+ */
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account",
@@ -40,6 +69,50 @@ export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
 
 export const db = getFirestore();
+
+/**
+ * **************************
+ * addCollectionAndDocuments
+ * **************************
+ */
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+  await batch.commit();
+  console.log("done");
+};
+
+/**
+ * **************************
+ * getCatagoriesAndDocuments
+ * **************************
+ */
+export const getCatagoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+};
+
+/**
+ * ***************************
+ * createUserDocumentFromAuth
+ * ***************************
+ */
 export const createUserDocumentFromAuth = async (
   userAuth,
   additionalInformation = {}
@@ -73,20 +146,40 @@ export const createUserDocumentFromAuth = async (
   return userDocRef;
 };
 
+/**
+ * ***********************************
+ * createAuthUserWithEmailAndPassword
+ * ***********************************
+ */
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return createUserWithEmailAndPassword(auth, email, password);
 };
 
+/**
+ * ***********************************
+ * signInAuthUserWithEmailAndPassword
+ * ***********************************
+ */
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return signInWithEmailAndPassword(auth, email, password);
 };
 
+/**
+ * *************
+ * signOutUser
+ * *************
+ */
 export const signOutUser = async () => {
   await signOut(auth);
 };
 
+/**
+ * ***************************
+ * onAuthStateChangedListener
+ * ***************************
+ */
 export const onAuthStateChangedListener = (callback) => {
   onAuthStateChanged(auth, callback);
 };
