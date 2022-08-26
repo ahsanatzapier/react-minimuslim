@@ -10,6 +10,7 @@ import { CartContext } from "../../../contexts/cart.context";
 
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 // import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 
 import {
   NavigationContainer,
@@ -19,6 +20,7 @@ import {
 } from "./navigation.styles";
 
 const Navigation = () => {
+  const navigate = useNavigate();
   // const alert = useAlert();
   const { currentUser } = useContext(UserContext);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
@@ -27,6 +29,7 @@ const Navigation = () => {
     setIsCartOpen(false);
     signOutUser();
     // alert.success("Successfully signed out ");
+    navigate("/");
   };
 
   console.log(currentUser);

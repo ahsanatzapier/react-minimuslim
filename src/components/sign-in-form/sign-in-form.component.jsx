@@ -1,5 +1,6 @@
 import { useState } from "react";
 // import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 
 import {
   signInWithGooglePopup,
@@ -15,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const navigate = useNavigate();
   // const alert = useAlert();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
@@ -26,14 +28,15 @@ const SignInForm = () => {
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
     // alert.success("Successfully signed in");
+    navigate("/");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
-
       // alert.success("Successfully signed in");
+      navigate("/");
       resetFormFields();
     } catch (error) {
       console.log(error);
