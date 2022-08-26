@@ -2,6 +2,12 @@
 
 https://minimuslim.netlify.app/
 
+# What is Mini Muslim?
+
+![alt text](https://github.com/ahsanatzapier/react-minimuslim/blob/main/src/assets/MiniMuslim.svg?raw=true)
+
+Mini Muslim is a massive eCommerce application similar to Shopify. It uses React for UI development and Firebase for the database. The website is hosted on Netlify.
+
 # Preview
 
 ![](https://cdn.zappy.app/b5bf788d4c9044a9f6a5045f1b249ef3.png)
@@ -9,10 +15,6 @@ https://minimuslim.netlify.app/
 ![](https://cdn.zappy.app/de5f1087c442d0557d689d02efc144be.png)
 
 ![](https://cdn.zappy.app/78665194464d1de6de8018f5cd3c9ce8.png)
-
-# What is Mini Muslim?
-
-Mini Muslim is a massive eCommerce application similar to Shopify. It uses React for UI development and Firebase for the database. The website is hosted on Netlify.
 
 ## Available Scripts
 
