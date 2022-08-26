@@ -11,7 +11,12 @@ import { CartContext } from "../../../contexts/cart.context";
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 import { useAlert } from "react-alert";
 
-import "./navigation.styles.scss";
+import {
+  NavigationContainer,
+  LogoContainer,
+  NavLinks,
+  NavLink,
+} from "./navigation.styles";
 
 const Navigation = () => {
   const alert = useAlert();
@@ -27,40 +32,29 @@ const Navigation = () => {
   console.log(currentUser);
   return (
     <Fragment>
-      <div className="navigation">
-        <Link
-          className="logo-container"
-          to="/"
-          onClick={() => setIsCartOpen(false)}
-        >
+      <NavigationContainer>
+        <LogoContainer to="/" onClick={() => setIsCartOpen(false)}>
           <MiniMusimLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link
-            className="nav-link"
-            to="/shop"
-            onClick={() => setIsCartOpen(false)}
-          >
+        </LogoContainer>
+
+        <NavLinks>
+          <NavLink to="/shop" onClick={() => setIsCartOpen(false)}>
             SHOP
-          </Link>
+          </NavLink>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutHandler}>
+            <NavLink as="span" onClick={signOutHandler}>
               SIGN OUT
-            </span>
+            </NavLink>
           ) : (
-            <Link
-              className="nav-link"
-              to="/auth"
-              onClick={() => setIsCartOpen(false)}
-            >
+            <NavLink to="/auth" onClick={() => setIsCartOpen(false)}>
               SIGN IN
-            </Link>
+            </NavLink>
           )}
 
           <CartIcon />
-        </div>
+        </NavLinks>
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );
