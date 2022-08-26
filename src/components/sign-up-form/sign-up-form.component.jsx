@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -17,7 +17,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
-  const alert = useAlert();
+  // const alert = useAlert();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmedPassword } = formFields;
 
@@ -28,7 +28,7 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (password !== confirmedPassword) {
-      alert("Password does not match");
+      // alert("Password does not match");
       return;
     }
 
@@ -45,10 +45,10 @@ const SignUpForm = () => {
 
       switch (error.code) {
         case "auth/email-already-in-use":
-          alert.error("Email already in use");
+          // alert.error("Email already in use");
           break;
         case "auth/weak-password":
-          alert.error("Password should be at least 6 characters");
+          // alert.error("Password should be at least 6 characters");
           break;
         default:
           break;

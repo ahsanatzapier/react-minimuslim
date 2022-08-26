@@ -9,7 +9,7 @@ import { UserContext } from "../../../contexts/user.context";
 import { CartContext } from "../../../contexts/cart.context";
 
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 
 import {
   NavigationContainer,
@@ -19,14 +19,14 @@ import {
 } from "./navigation.styles";
 
 const Navigation = () => {
-  const alert = useAlert();
+  // const alert = useAlert();
   const { currentUser } = useContext(UserContext);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   const signOutHandler = () => {
     setIsCartOpen(false);
     signOutUser();
-    alert.success("Successfully signed out ");
+    // alert.success("Successfully signed out ");
   };
 
   console.log(currentUser);

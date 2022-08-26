@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import "./checkout-item.styles.scss";
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   const { clearItemFromCart, addItemtoCart, removeItemToCart } =
     useContext(CartContext);
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const clearItemHandler = () => {
     clearItemFromCart(cartItem);
@@ -20,7 +20,7 @@ const CheckoutItem = ({ cartItem }) => {
   };
   const removeItemHandler = () => {
     removeItemToCart(cartItem);
-    if (cartItem.quantity !== 1) alert.success("Quantity Decreased");
+    // if (cartItem.quantity !== 1) alert.success("Quantity Decreased");
   };
 
   return (

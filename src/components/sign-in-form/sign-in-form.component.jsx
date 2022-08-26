@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 
 import {
   signInWithGooglePopup,
@@ -15,7 +15,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
-  const alert = useAlert();
+  // const alert = useAlert();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -25,7 +25,7 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
-    alert.success("Successfully signed in");
+    // alert.success("Successfully signed in");
   };
 
   const handleSubmit = async (event) => {
@@ -33,7 +33,7 @@ const SignInForm = () => {
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
 
-      alert.success("Successfully signed in");
+      // alert.success("Successfully signed in");
       resetFormFields();
     } catch (error) {
       console.log(error);

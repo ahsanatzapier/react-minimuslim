@@ -1,16 +1,16 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 import "./cart-item.styles.scss";
 
 const CartItem = ({ cartItem }) => {
   const { name, quantity, imageUrl, price } = cartItem;
   const { clearItemFromCart } = useContext(CartContext);
-  const alert = useAlert();
+  // const alert = useAlert();
 
   const clearItemHandler = () => {
     clearItemFromCart(cartItem);
-    alert.success("Item removed from cart");
+    // alert.success("Item removed from cart");
   };
 
   return (

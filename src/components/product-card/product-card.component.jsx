@@ -2,10 +2,10 @@ import "./product-card.styles.scss";
 import Button from "../button/button.component";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
-import { useAlert } from "react-alert";
+// import { useAlert } from "react-alert";
 
 const ProductCard = ({ product }) => {
-  const alert = useAlert();
+  // const alert = useAlert();
   const { name, price, imageUrl } = product;
   const { addItemtoCart } = useContext(CartContext);
 
@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
         buttonType="inverted"
         onClick={() => {
           addItemtoCart(product);
-          alert.success("Item added to cart");
+          // alert.success("Item added to cart");
         }}
       >
         Add Item
