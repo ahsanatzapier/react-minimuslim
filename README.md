@@ -1,6 +1,18 @@
-# Getting Started with Create React App
+# Live Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://minimuslim.netlify.app/
+
+# Preview
+
+![](https://cdn.zappy.app/b5bf788d4c9044a9f6a5045f1b249ef3.png)
+
+![](https://cdn.zappy.app/de5f1087c442d0557d689d02efc144be.png)
+
+![](https://cdn.zappy.app/78665194464d1de6de8018f5cd3c9ce8.png)
+
+# What is Mini Muslim?
+
+Mini Muslim is a massive eCommerce application similar to Shopify. It uses React for UI development and Firebase for the database. The website is hosted on Netlify.
 
 ## Available Scripts
 
