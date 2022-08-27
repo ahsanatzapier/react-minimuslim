@@ -6,7 +6,7 @@ https://minimuslim.netlify.app/
 
 ![alt text](https://github.com/ahsanatzapier/react-minimuslim/blob/main/src/assets/MiniMuslim.svg?raw=true)
 
-Mini Muslim is a massive eCommerce application similar to Shopify. It uses React for UI development and Firebase for the database. The website is hosted on Netlify.
+Mini Muslim is a massive eCommerce application similar to Shopify. It uses React for UI development and Firebase for the database. The website is hosted on Netlify. The app's features include being able to authenticate using Firebase, browsing a directory of item categories, browsing items in those categories, and being able to add/remove items and increment and decrement their quantity.
 
 # Preview
 
