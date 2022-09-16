@@ -3,36 +3,27 @@ import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./App";
 
-import { UserProvider } from "./contexts/user.context";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+
 import { CategoriesProvider } from "./contexts/categories.context";
 import { CartProvider } from "./contexts/cart.context";
 
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-// import { transitions, positions, Provider as AlertProvider } from "react-alert";
-import AlertTemplate from "../src/template/react-alert.js";
-
-// const options = {
-//   position: positions.TOP_CENTER,
-//   timeout: 2000,
-//   offset: "30px",
-//   transition: transitions.FADE,
-// };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* <AlertProvider template={AlertTemplate} {...options}> */}
-      <UserProvider>
+    <Provider store={store}>
+      <BrowserRouter>
         <CategoriesProvider>
           <CartProvider>
             <App />
           </CartProvider>
         </CategoriesProvider>
-      </UserProvider>
-      {/* </AlertProvider> */}
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>
 );
 
