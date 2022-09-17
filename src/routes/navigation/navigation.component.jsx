@@ -30,7 +30,7 @@ const Navigation = () => {
     navigate("/");
   };
 
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <Fragment>
       <NavigationContainer>
