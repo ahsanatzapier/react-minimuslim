@@ -7,8 +7,8 @@ const DirectoryItem = ({ category }) => {
   return (
     <div className="directory-item-container">
       <div
-        className="background-image"
-        style={{ "background-image": `url(${image})` }}
+        className="backgroundImage"
+        style={{ backgroundImage: `url(${image})` }}
       />
 
       <Link className="body" to={`shop/${title.toLowerCase()}`}>

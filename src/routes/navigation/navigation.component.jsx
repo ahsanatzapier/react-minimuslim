@@ -1,15 +1,15 @@
 import { Fragment, useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ReactComponent as MiniMusimLogo } from "../../assets/MiniMuslim.svg";
 
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
-import { UserContext } from "../../contexts/user.context";
 import { CartContext } from "../../contexts/cart.context";
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
-// import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -21,18 +21,16 @@ import {
 
 const Navigation = () => {
   const navigate = useNavigate();
-  // const alert = useAlert();
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   const signOutHandler = () => {
     setIsCartOpen(false);
     signOutUser();
-    // alert.success("Successfully signed out ");
     navigate("/");
   };
 
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <Fragment>
       <NavigationContainer>
